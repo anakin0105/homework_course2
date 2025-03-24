@@ -14,7 +14,7 @@ def mask_account_card(data: str) -> Union[str]:
     name = " ".join(parts[:-1])
     number = parts[-1]
 
-    if name.lower().startswith("счет"):
+    if len(number) == 20:
         masked_number = get_mask_account(number)
     else:
         masked_number = get_mask_card_number(number)
