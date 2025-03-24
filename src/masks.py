@@ -17,4 +17,3 @@ def get_mask_account(account_number: Union[str]) -> Union[str]:
         return masked_number
     else:
         return "Проверьте правильность введенного номера счета!"
-
