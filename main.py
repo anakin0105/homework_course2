@@ -1,5 +1,5 @@
 from src.widget import mask_account_card, get_date
-from src.processing import  filter_by_state, sort_by_date
+from src.processing import filter_by_state, sort_by_date
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
@@ -16,20 +16,20 @@ if __name__ == "__main__":
 
     # Исходные данные.
     data = [
-        {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
-        {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
-        {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
-        {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
+        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]
 
     # Вызов filter_by_state для EXECUTED.
-    print(filter_by_state(data, 'EXECUTED'))
+    print(filter_by_state(data, "EXECUTED"))
 
     # Вызов filter_by_state для CANCELED.
-    print(filter_by_state(data, 'CANCELED'))
+    print(filter_by_state(data, "CANCELED"))
 
     # Вызов sort_by_date на отфильтрованных данных (EXECUTED) в порядке убывания.
-    print(sort_by_date(filter_by_state(data, 'EXECUTED'), True))
+    print(sort_by_date(filter_by_state(data, "EXECUTED"), True))
 
     # Вызов sort_by_date на отфильтрованных данных (CANCELED) по возрастанию.
-    print(sort_by_date(filter_by_state(data, 'CANCELED'), False))
+    print(sort_by_date(filter_by_state(data, "CANCELED"), False))
