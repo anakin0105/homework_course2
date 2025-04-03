@@ -1,4 +1,3 @@
-
 from src.masks import get_mask_card_number, get_mask_account
 
 
@@ -39,4 +38,3 @@ def test_mask_account_non_digit():
     """Тест: Возврат ошибки при наличии символов в номере счета."""
     assert get_mask_account("12345678abcdefgh1234") == "Проверьте правильность введенного номера счета!"
     assert get_mask_account("accountnumber!") == "Проверьте правильность введенного номера счета!"
-

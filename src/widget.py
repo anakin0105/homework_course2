@@ -1,8 +1,9 @@
-from typing import Union
 
-from src.masks import get_mask_account, get_mask_card_number
 
 from typing import Union
+
+from src.masks import get_mask_account
+from src.masks import get_mask_card_number
 
 
 def mask_account_card(data: str) -> Union[str]:
@@ -42,6 +43,7 @@ def mask_account_card(data: str) -> Union[str]:
 
     # Если ничего не подошло
     return "Некорректный формат данных!"
+
 
 def get_date(date_time: str) -> str:
     """
