@@ -1,6 +1,6 @@
 from src.widget import mask_account_card, get_date
 from src.processing import filter_by_state, sort_by_date
-from src.generators import filter_by_currency
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
@@ -71,3 +71,15 @@ if __name__ == "__main__":
     usd_transactions = filter_by_currency(transactions, "USD")
     for _ in range(2):  # Получить две первые транзакции
         print(next(usd_transactions))
+
+    # Вызов transaction_descriptions.
+    print("Описания транзакций:")
+    descriptions = transaction_descriptions(transactions)
+    for description in descriptions:
+        print(f"- {description}")
+
+    # Генерация номеров карт.
+    print("Генерация номеров карт:")
+    card_gen = card_number_generator(1, 10)  # Сгенерируем первые 10 номеров
+    for card in card_gen:
+        print(card)
