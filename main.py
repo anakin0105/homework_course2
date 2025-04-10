@@ -1,5 +1,6 @@
 from src.widget import mask_account_card, get_date
 from src.processing import filter_by_state, sort_by_date
+from src.generators import filter_by_currency
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
@@ -33,3 +34,40 @@ if __name__ == "__main__":
 
     # Вызов sort_by_date на отфильтрованных данных (CANCELED) по возрастанию.
     print(sort_by_date(filter_by_state(data, "CANCELED"), False))
+
+    # Вызов filter_by_currency для USD
+    transactions = [
+        {
+            "id": 939719570,
+            "state": "EXECUTED",
+            "date": "2018-06-30T02:08:58.425572",
+            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод организации",
+            "from": "Счет 75106830613657916952",
+            "to": "Счет 11776614605963066702",
+        },
+        {
+            "id": 142264268,
+            "state": "EXECUTED",
+            "date": "2019-04-04T23:20:05.206878",
+            "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод со счета на счет",
+            "from": "Счет 19708645243227258542",
+            "to": "Счет 75651667383060284188",
+        },
+        {
+            "id": 123456789,
+            "state": "PENDING",
+            "date": "2020-01-01T00:00:00",
+            "operationAmount": {"amount": "1200.00", "currency": {"name": "EUR", "code": "EUR"}},
+            "description": "Покупка",
+            "from": "Счет 12345678912345678912",
+            "to": "Счет 98765432198765432198",
+        },
+    ]
+
+    # Используем генератор для получения первых двух транзакций в USD:
+    print("Транзакции в валюте USD:")
+    usd_transactions = filter_by_currency(transactions, "USD")
+    for _ in range(2):  # Получить две первые транзакции
+        print(next(usd_transactions))
