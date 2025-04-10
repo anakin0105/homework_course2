@@ -1,5 +1,8 @@
 import pytest
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+from src.generators import card_number_generator
+from src.generators import filter_by_currency
+from src.generators import transaction_descriptions
 
 
 # Тест 1: Фильтрация транзакций с валютой "USD"
@@ -70,6 +73,7 @@ def test_transaction_descriptions_empty_list():
     descriptions = list(transaction_descriptions(transactions))
     assert descriptions == []
 
+
 def test_card_number_generator_standard():
     """Проверяем стандартный диапазон генерации номеров карт"""
     card_gen = card_number_generator(1, 5)
@@ -81,6 +85,7 @@ def test_card_number_generator_standard():
         "0000 0000 0000 0004",
         "0000 0000 0000 0005",
     ]
+
 
 def test_card_number_generator_large_numbers():
     """Проверяем генерацию больших номеров"""
@@ -94,17 +99,20 @@ def test_card_number_generator_large_numbers():
         "9999 9999 9999 9999",
     ]
 
+
 def test_card_number_generator_empty_range():
     """Проверяем случай, когда start > end"""
     card_gen = card_number_generator(10, 5)
     cards = list(card_gen)
     assert cards == []  # Генерация должна быть пустой
 
+
 def test_card_number_generator_single_number():
     """Проверяем случай, когда start == end"""
     card_gen = card_number_generator(5, 5)
     cards = list(card_gen)
     assert cards == ["0000 0000 0000 0005"]  # Должен быть один номер
+
 
 def test_card_number_generator_no_start_end():
     """Проверяем генерацию по умолчанию от 1 до 9999...9999"""
@@ -116,6 +124,8 @@ def test_card_number_generator_no_start_end():
         "0000 0000 0000 0002",
         "0000 0000 0000 0003",
     ]
+
+
 @pytest.fixture
 def transactions_data():
     """Фикстура: список транзакций для тестирования."""
@@ -141,6 +151,8 @@ def transactions_data():
             "state": "EXECUTED",
         },
     ]
+
+
 @pytest.mark.parametrize(
     "currency_code, expected_ids",
     [
@@ -155,6 +167,8 @@ def test_filter_by_currency(transactions_data, currency_code, expected_ids):
     filtered_gen = filter_by_currency(transactions_data, currency_code)
     result_ids = [transaction["id"] for transaction in filtered_gen]
     assert result_ids == expected_ids
+
+
 @pytest.fixture
 def transactions_with_descriptions():
     """Фикстура: список транзакций с описаниями."""
@@ -163,16 +177,8 @@ def transactions_with_descriptions():
         {"description": "Оплата за услуги", "id": 2},
         {"state": "EXECUTED", "id": 3},  # Без описания
     ]
-@pytest.mark.parametrize(
-    "expected_descriptions",
-    [
-        ["Перевод организации", "Оплата за услуги"],  # Только описания
-    ],
-)
-def test_transaction_descriptions(transactions_with_descriptions, expected_descriptions):
-    """Тестируем transaction_descriptions, чтобы получить все описания."""
-    descriptions = list(transaction_descriptions(transactions_with_descriptions))
-    assert descriptions == expected_descriptions
+
+
 @pytest.mark.parametrize(
     "start, stop",
     [

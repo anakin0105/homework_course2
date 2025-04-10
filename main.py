@@ -1,6 +1,10 @@
-from src.widget import mask_account_card, get_date
-from src.processing import filter_by_state, sort_by_date
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.generators import card_number_generator
+from src.generators import filter_by_currency
+from src.generators import transaction_descriptions
+from src.processing import filter_by_state
+from src.processing import sort_by_date
+from src.widget import get_date
+from src.widget import mask_account_card
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
