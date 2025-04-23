@@ -77,7 +77,6 @@ if __name__ == "__main__":
     for _ in range(2):  # Получить две первые транзакции
         print(next(usd_transactions))
 
-
     # Вызов transaction_descriptions с исправленной типизацией.
     def transaction_descriptions(txns: List[Dict[str, Any]]) -> List[Optional[str]]:
         """Возвращает список описаний транзакций."""

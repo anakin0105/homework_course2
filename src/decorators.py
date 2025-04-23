@@ -1,72 +1,51 @@
+from functools import wraps
+from typing import Callable, Any, Optional
 import datetime
-from typing import Any, Optional
 
 
-def log(filename: Optional[str] = None) -> Any:
-    """Декоратор, который автоматически регистрирует детали
-    выполнения функций, такие как: время вызова, имя функции,
-    передаваемые аргументы, результат выполнения и информацию об ошибках"""
+def log(filename: Optional[str] = None) -> Callable:
+    """
+    Декоратор для логирования работы функций.
 
-    def decorator_1(func: Any) -> Any:
+    :param filename: Имя файла, в который записываются логи. Если None, вывод идёт в консоль.
+    :return: Декорированная функция
+    """
+
+    def decorator(func: Callable) -> Callable:
+        @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
-            # Формируем информацию о запуске функции
-            mark = ""
-            start_time = datetime.datetime.now()
-            log_entry = [
-                f"{func.__name__} started with arguments: {args}, {kwargs}",
-            ]
-
             try:
-                # Вызываем функцию и получаем результат
+                # Регистрируем время вызова и аргументы
+                start_time = datetime.datetime.now()
+                log_message = f"{start_time} - Calling function '{func.__name__}' with args: {args}, kwargs: {kwargs}\n"
+
+                # Запускаем функцию и логируем успех
                 result = func(*args, **kwargs)
+                log_message += f"{start_time} - Function '{func.__name__}' executed successfully with result: {result}\n"
 
-                if result:
-                    mark = "OK"
-
-                # Формируем информацию об успешном выполнении
-                end_time = datetime.datetime.now()
-                log_entry.extend(
-                    [
-                        f"Execution time: {end_time - start_time}",
-                        f"{func.__name__} ended -> {mark}",
-                        f"Results: {result}",
-                    ]
-                )
-
-                # Объединяем все строки лога
-                full_log = "\n".join(log_entry) + "\n"
-
-                # Записываем лог в файл или выводим в консоль
+                # Запись логов
                 if filename:
                     with open(filename, "a") as file:
-                        file.write(full_log)
+                        file.write(log_message)
                 else:
-                    print(full_log)
+                    print(log_message)
 
                 return result
-
             except Exception as e:
-                # Формируем информацию об ошибке
-                error_time = datetime.datetime.now()
-                log_entry.extend(
-                    [
-                        f"{func.__name__} raised an error",
-                        f"Error type: {type(e).__name__}",
-                        f"Error message: {str(e)}",
-                        f"Execution time before error: {error_time - start_time}",
-                    ]
+                # Логируем ошибку
+                log_message = (
+                    f"{datetime.datetime.now()} - Function '{func.__name__}' failed with error: {str(e)}. "
+                    f"Inputs: {args}, {kwargs}\n"
                 )
 
-                # Объединяем все строки лога
-                full_log = "\n".join(log_entry) + "\n"
-
-                # Записываем лог в файл или выводим в консоль
                 if filename:
                     with open(filename, "a") as file:
-                        file.write(full_log)
+                        file.write(log_message)
                 else:
-                    print(full_log)
+                    print(log_message)
+
+                raise
 
         return wrapper
 
-    return decorator_1
+    return decorator

@@ -1,5 +1,6 @@
 from typing import Generator, List, Dict, Optional, Union
 
+
 def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict, None, None]:
     for transaction in transactions:
         operation_currency = transaction.get("operationAmount", {}).get("currency", {}).get("code")

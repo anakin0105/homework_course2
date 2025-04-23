@@ -6,7 +6,7 @@ from typing import List, Dict, Union
 
 
 @pytest.fixture
-def sample_data()-> List[Dict[str, Union[int, str]]]:
+def sample_data() -> List[Dict[str, Union[int, str]]]:
     """Фикстура для тестирования функций filter_by_state и sort_by_date."""
     return [
         {"id": 1, "state": "EXECUTED", "date": "2023-12-01"},
