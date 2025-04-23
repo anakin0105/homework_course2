@@ -4,6 +4,7 @@ from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.generators import transaction_descriptions
 from typing import Union
+from typing import List, Dict, Any, Optional
 
 
 # Тест 1: Фильтрация транзакций с валютой "USD"
@@ -44,15 +45,9 @@ def test_filter_by_currency_missing_currency() -> None:
     assert usd_transactions[0]["id"] == 2
 
 
-from typing import List, Dict, Any, Optional
-
-
 def transaction_descriptions1(transactions: List[Dict[str, Any]]) -> List[Optional[str]]:
     """Возвращает список описаний транзакций."""
     return [transaction.get("description") for transaction in transactions]
-
-
-from typing import List, Dict, Any, Optional
 
 
 def transaction_descriptions2(transactions: List[Dict[str, Any]]) -> List[Optional[str]]:

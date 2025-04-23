@@ -8,7 +8,7 @@ def log(filename: Optional[str] = None) -> Callable:
     Декоратор для логирования работы функций.
 
     :param filename: Имя файла, в который записываются логи. Если None, вывод идёт в консоль.
-    :return: Декорированная функция
+    :return: Декорированная функцияpytest --cov=. --cov-report=html
     """
 
     def decorator(func: Callable) -> Callable:
@@ -17,11 +17,15 @@ def log(filename: Optional[str] = None) -> Callable:
             try:
                 # Регистрируем время вызова и аргументы
                 start_time = datetime.datetime.now()
-                log_message = f"{start_time} - Calling function '{func.__name__}' with args: {args}, kwargs: {kwargs}\n"
+                log_message = (
+                    f"{start_time} - Calling function '{func.__name__}' with args: {args}, kwargs: {kwargs}\n"
+                )
 
                 # Запускаем функцию и логируем успех
                 result = func(*args, **kwargs)
-                log_message += f"{start_time} - Function '{func.__name__}' executed successfully with result: {result}\n"
+                log_message += (
+                    f"{start_time} - Function '{func.__name__}' executed successfully with result: {result}\n"
+                )
 
                 # Запись логов
                 if filename:
