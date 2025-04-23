@@ -21,7 +21,7 @@ from src.widget import mask_account_card
         ("", "Некорректный формат данных!"),  # Пустая строка
     ],
 )
-def test_mask_account_card(data, expected):
+def test_mask_account_card(data: str, expected: str) -> None:
     """
     Тестирует маскирование карт и счетов, а также обработку некорректных данных.
     """
@@ -48,7 +48,7 @@ def test_mask_account_card(data, expected):
         ("20231201T142300", "Дата указана неверно!"),  # Дата, записанная без разделителей
     ],
 )
-def test_get_date(date_time, expected):
+def test_get_date(date_time: str, expected: str) -> None:
     """
     Тест функции get_date для разных входных строк.
     """
