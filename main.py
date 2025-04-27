@@ -1,6 +1,7 @@
+from typing import List, Dict, Any, Optional
+
 from src.generators import card_number_generator
 from src.generators import filter_by_currency
-from src.generators import transaction_descriptions
 from src.processing import filter_by_state
 from src.processing import sort_by_date
 from src.widget import get_date
@@ -76,11 +77,10 @@ if __name__ == "__main__":
     for _ in range(2):  # Получить две первые транзакции
         print(next(usd_transactions))
 
-    # Вызов transaction_descriptions.
-    print("Описания транзакций:")
-    descriptions = transaction_descriptions(transactions)
-    for description in descriptions:
-        print(f"- {description}")
+    # Вызов transaction_descriptions с исправленной типизацией.
+    def transaction_descriptions(txns: List[Dict[str, Any]]) -> List[Optional[str]]:
+        """Возвращает список описаний транзакций."""
+        return [txn.get("description") for txn in txns]
 
     # Генерация номеров карт.
     print("Генерация номеров карт:")

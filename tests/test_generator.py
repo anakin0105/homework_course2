@@ -3,10 +3,12 @@ import pytest
 from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.generators import transaction_descriptions
+from typing import Union
+from typing import List, Dict, Any, Optional
 
 
 # Тест 1: Фильтрация транзакций с валютой "USD"
-def test_filter_by_currency_usd():
+def test_filter_by_currency_usd() -> None:
     transactions = [
         {"id": 1, "operationAmount": {"currency": {"code": "USD"}}},
         {"id": 2, "operationAmount": {"currency": {"code": "EUR"}}},
@@ -19,7 +21,7 @@ def test_filter_by_currency_usd():
 
 
 # Тест 2: Фильтрация, где нет транзакций с валютой "USD"
-def test_filter_by_currency_empty_result():
+def test_filter_by_currency_empty_result() -> None:
     transactions = [
         {"id": 1, "operationAmount": {"currency": {"code": "EUR"}}},
         {"id": 2, "operationAmount": {"currency": {"code": "GBP"}}},
@@ -29,52 +31,66 @@ def test_filter_by_currency_empty_result():
 
 
 # Тест 3: Обработка пустого списка
-def test_filter_by_currency_empty_list():
-    transactions = []
+def test_filter_by_currency_empty_list() -> None:
+    transactions: list[dict[str, str]] = []
     usd_transactions = list(filter_by_currency(transactions, "USD"))
     assert len(usd_transactions) == 0
 
 
 # Тест 4: Транзакции без поля "currency"
-def test_filter_by_currency_missing_currency():
-    transactions = [{"id": 1}, {"id": 2, "operationAmount": {"currency": {"code": "USD"}}}]
+def test_filter_by_currency_missing_currency() -> None:
+    transactions: list[dict[str, Any]] = [{"id": 1}, {"id": 2, "operationAmount": {"currency": {"code": "USD"}}}]
     usd_transactions = list(filter_by_currency(transactions, "USD"))
     assert len(usd_transactions) == 1
     assert usd_transactions[0]["id"] == 2
 
 
-def test_transaction_descriptions():
+def transaction_descriptions1(transactions: List[Dict[str, Any]]) -> List[Optional[str]]:
+    """Возвращает список описаний транзакций."""
+    return [transaction.get("description") for transaction in transactions]
+
+
+def transaction_descriptions2(transactions: List[Dict[str, Any]]) -> List[Optional[str]]:
+    """Возвращает список описаний транзакций."""
+    return [transaction.get("description") for transaction in transactions]
+
+
+def test_transaction_descriptions() -> None:
+    """Тестирует функцию transaction_descriptions с корректными данными."""
     # Тестовые данные
-    transactions = [
-        {"id": 1, "description": "Оплата товаров"},
-        {"id": 2, "description": "Перевод средств"},
-        {"id": 3, "description": "Покупка билетов"},
+    transactions: List[Dict[str, Optional[str]]] = [
+        {"id": "1", "description": "Оплата товаров"},  # id преобразован в строку
+        {"id": "2", "description": "Перевод средств"},
+        {"id": "3", "description": "Покупка билетов"},
     ]
     # Проверка результатов
     descriptions = list(transaction_descriptions(transactions))
     assert descriptions == ["Оплата товаров", "Перевод средств", "Покупка билетов"]
 
 
-def test_transaction_descriptions_missing_field():
-    # Данные с отсутствующими описаниями
-    transactions = [
+def test_transaction_descriptions_missing_field() -> None:
+    """Тестирует функцию transaction_descriptions с отсутствующими ключами."""
+    # Данные с отсутствующими описаниями, где "id" сохранён как число
+    transactions: List[Dict[str, Union[int, Optional[str]]]] = [
         {"id": 1, "description": "Оплата товаров"},
         {"id": 2},  # Нет поля "description"
         {"id": 3, "description": "Покупка билетов"},
     ]
+
     # Проверка списка
     descriptions = list(transaction_descriptions(transactions))
     assert descriptions == ["Оплата товаров", "Покупка билетов"]
 
 
-def test_transaction_descriptions_empty_list():
+def test_transaction_descriptions_empty_list() -> None:
+    """Тестируем функцию transaction_descriptions на пустом списке."""
     # Пустой список
-    transactions = []
+    transactions: List[Dict[str, Optional[str]]] = []  # Аннотируем список транзакций
     descriptions = list(transaction_descriptions(transactions))
     assert descriptions == []
 
 
-def test_card_number_generator_standard():
+def test_card_number_generator_standard() -> None:
     """Проверяем стандартный диапазон генерации номеров карт"""
     card_gen = card_number_generator(1, 5)
     cards = list(card_gen)
@@ -87,7 +103,7 @@ def test_card_number_generator_standard():
     ]
 
 
-def test_card_number_generator_large_numbers():
+def test_card_number_generator_large_numbers() -> None:
     """Проверяем генерацию больших номеров"""
     card_gen = card_number_generator(9999999999999995, 9999999999999999)
     cards = list(card_gen)
@@ -100,21 +116,21 @@ def test_card_number_generator_large_numbers():
     ]
 
 
-def test_card_number_generator_empty_range():
+def test_card_number_generator_empty_range() -> None:
     """Проверяем случай, когда start > end"""
     card_gen = card_number_generator(10, 5)
     cards = list(card_gen)
     assert cards == []  # Генерация должна быть пустой
 
 
-def test_card_number_generator_single_number():
+def test_card_number_generator_single_number() -> None:
     """Проверяем случай, когда start == end"""
     card_gen = card_number_generator(5, 5)
     cards = list(card_gen)
     assert cards == ["0000 0000 0000 0005"]  # Должен быть один номер
 
 
-def test_card_number_generator_no_start_end():
+def test_card_number_generator_no_start_end() -> None:
     """Проверяем генерацию по умолчанию от 1 до 9999...9999"""
     # Ограничимся первыми 3 номерами, чтобы не грузить генерацию
     card_gen = card_number_generator()
@@ -127,7 +143,7 @@ def test_card_number_generator_no_start_end():
 
 
 @pytest.fixture
-def transactions_data():
+def transactions_data() -> List[Dict[str, Any]]:
     """Фикстура: список транзакций для тестирования."""
     return [
         {
@@ -162,7 +178,9 @@ def transactions_data():
         ("JPY", []),
     ],
 )
-def test_filter_by_currency(transactions_data, currency_code, expected_ids):
+def test_filter_by_currency(
+    transactions_data: List[Dict[str, Any]], currency_code: str, expected_ids: List[int]
+) -> None:
     """Тестируем filter_by_currency с разными валютами."""
     filtered_gen = filter_by_currency(transactions_data, currency_code)
     result_ids = [transaction["id"] for transaction in filtered_gen]
@@ -170,7 +188,7 @@ def test_filter_by_currency(transactions_data, currency_code, expected_ids):
 
 
 @pytest.fixture
-def transactions_with_descriptions():
+def transactions_with_descriptions() -> List[Dict[str, Any]]:
     """Фикстура: список транзакций с описаниями."""
     return [
         {"description": "Перевод организации", "id": 1},
@@ -185,7 +203,7 @@ def transactions_with_descriptions():
         (9999999999999995, 9999999999999999),  # Проверка больших диапазонов
     ],
 )
-def test_card_number_generator_large_range(start, stop):
+def test_card_number_generator_large_range(start: int, stop: int) -> None:
     """Тестируем генерацию номеров для большого диапазона."""
     card_gen = card_number_generator(start, stop)
     result = list(card_gen)

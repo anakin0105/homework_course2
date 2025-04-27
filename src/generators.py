@@ -1,4 +1,7 @@
-def filter_by_currency(transactions, currency):
+from typing import Generator, List, Dict, Optional, Union
+
+
+def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict, None, None]:
     for transaction in transactions:
         operation_currency = transaction.get("operationAmount", {}).get("currency", {}).get("code")
         if operation_currency == currency:
@@ -8,11 +11,11 @@ def filter_by_currency(transactions, currency):
             print("Пропущенная операция: нет валюты")
 
 
-def transaction_descriptions(transactions):
+def transaction_descriptions(transactions: List[Dict[str, Union[int, Optional[str]]]]) -> List[Optional[str]]:
     """
     Генератор, который возвращает описание транзакций по очереди.
 
-    :param transactions: список транзакций (словарей).
+    :param transactions: Списки транзакций (словарей).
     :yield: строка с описанием каждой транзакции.
     """
     for transaction in transactions:
@@ -21,7 +24,7 @@ def transaction_descriptions(transactions):
             yield description
 
 
-def card_number_generator(start=1, end=10**16 - 1):
+def card_number_generator(start: int = 1, end: int = 10**16 - 1) -> Generator[str, None, None]:
     """
     Генерирует последовательные номера карт от `start` до `end`.
 
