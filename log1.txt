@@ -104,3 +104,33 @@
 2025-04-23 22:49:08.963618 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
 2025-04-23 22:49:08.966978 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
 2025-04-23 22:49:08.966978 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-05-15 22:00:03.640277 - Calling function 'get_mask_card_number' with args: ('1596837868705199',), kwargs: {}
+2025-05-15 22:00:03.640277 - Function 'get_mask_card_number' executed successfully with result: 1596 83** **** 5199
+2025-05-15 22:00:03.658852 - Calling function 'get_mask_card_number' with args: ('7158300734726758',), kwargs: {}
+2025-05-15 22:00:03.658852 - Function 'get_mask_card_number' executed successfully with result: 7158 30** **** 6758
+2025-05-15 22:00:03.659560 - Calling function 'get_mask_card_number' with args: ('6831982476737658',), kwargs: {}
+2025-05-15 22:00:03.659560 - Function 'get_mask_card_number' executed successfully with result: 6831 98** **** 7658
+2025-05-15 22:00:03.660067 - Calling function 'get_mask_card_number' with args: ('8990922113665229',), kwargs: {}
+2025-05-15 22:00:03.660067 - Function 'get_mask_card_number' executed successfully with result: 8990 92** **** 5229
+2025-05-15 22:00:03.660597 - Calling function 'get_mask_card_number' with args: ('5999414228426353',), kwargs: {}
+2025-05-15 22:00:03.660597 - Function 'get_mask_card_number' executed successfully with result: 5999 41** **** 6353
+2025-05-22 20:14:10.423410 - Calling function 'get_mask_card_number' with args: ('1596837868705199',), kwargs: {}
+2025-05-22 20:14:10.423410 - Function 'get_mask_card_number' executed successfully with result: 1596 83** **** 5199
+2025-05-22 20:14:10.442718 - Calling function 'get_mask_card_number' with args: ('7158300734726758',), kwargs: {}
+2025-05-22 20:14:10.442718 - Function 'get_mask_card_number' executed successfully with result: 7158 30** **** 6758
+2025-05-22 20:14:10.443818 - Calling function 'get_mask_card_number' with args: ('6831982476737658',), kwargs: {}
+2025-05-22 20:14:10.443818 - Function 'get_mask_card_number' executed successfully with result: 6831 98** **** 7658
+2025-05-22 20:14:10.444698 - Calling function 'get_mask_card_number' with args: ('8990922113665229',), kwargs: {}
+2025-05-22 20:14:10.444698 - Function 'get_mask_card_number' executed successfully with result: 8990 92** **** 5229
+2025-05-22 20:14:10.445584 - Calling function 'get_mask_card_number' with args: ('5999414228426353',), kwargs: {}
+2025-05-22 20:14:10.445584 - Function 'get_mask_card_number' executed successfully with result: 5999 41** **** 6353
+2025-05-23 18:43:49.012682 - Calling function 'get_mask_card_number' with args: ('1596837868705199',), kwargs: {}
+2025-05-23 18:43:49.012682 - Function 'get_mask_card_number' executed successfully with result: 1596 83** **** 5199
+2025-05-23 18:43:49.017522 - Calling function 'get_mask_card_number' with args: ('7158300734726758',), kwargs: {}
+2025-05-23 18:43:49.017522 - Function 'get_mask_card_number' executed successfully with result: 7158 30** **** 6758
+2025-05-23 18:43:49.018674 - Calling function 'get_mask_card_number' with args: ('6831982476737658',), kwargs: {}
+2025-05-23 18:43:49.018674 - Function 'get_mask_card_number' executed successfully with result: 6831 98** **** 7658
+2025-05-23 18:43:49.019611 - Calling function 'get_mask_card_number' with args: ('8990922113665229',), kwargs: {}
+2025-05-23 18:43:49.019611 - Function 'get_mask_card_number' executed successfully with result: 8990 92** **** 5229
+2025-05-23 18:43:49.020548 - Calling function 'get_mask_card_number' with args: ('5999414228426353',), kwargs: {}
+2025-05-23 18:43:49.020548 - Function 'get_mask_card_number' executed successfully with result: 5999 41** **** 6353
