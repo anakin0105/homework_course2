@@ -248,3 +248,51 @@
 2025-05-24 20:41:13.319029 - Function 'get_mask_card_number' executed successfully with result: 8990 92** **** 5229
 2025-05-24 20:41:13.319347 - Calling function 'get_mask_card_number' with args: ('5999414228426353',), kwargs: {}
 2025-05-24 20:41:13.319347 - Function 'get_mask_card_number' executed successfully with result: 5999 41** **** 6353
+2025-05-26 20:14:22.251959 - Calling function 'get_mask_card_number' with args: ('1234567890123456',), kwargs: {}
+2025-05-26 20:14:22.251959 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 3456
+2025-05-26 20:14:22.265584 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-05-26 20:14:22.265584 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:22.273015 - Calling function 'get_mask_card_number' with args: ('1234ABCD5678EFGH',), kwargs: {}
+2025-05-26 20:14:22.273015 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:23.626253 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-05-26 20:14:23.626253 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-05-26 20:14:23.627094 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-05-26 20:14:23.627094 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-05-26 20:14:23.631191 - Calling function 'get_mask_card_number' with args: ('123',), kwargs: {}
+2025-05-26 20:14:23.631191 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:23.631906 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-05-26 20:14:23.631906 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:23.632998 - Calling function 'get_mask_card_number' with args: ('123456781234567890',), kwargs: {}
+2025-05-26 20:14:23.632998 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:23.637216 - Calling function 'get_mask_card_number' with args: ('1234abcd5678efgh',), kwargs: {}
+2025-05-26 20:14:23.637216 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:23.637995 - Calling function 'get_mask_card_number' with args: ('1234 5678 9012 3456',), kwargs: {}
+2025-05-26 20:14:23.637995 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:14:23.808756 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-05-26 20:14:23.808756 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-05-26 20:14:23.816847 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-05-26 20:14:23.816847 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-05-26 20:15:32.550958 - Calling function 'get_mask_card_number' with args: ('1234567890123456',), kwargs: {}
+2025-05-26 20:15:32.550958 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 3456
+2025-05-26 20:15:32.557433 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-05-26 20:15:32.557433 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.563454 - Calling function 'get_mask_card_number' with args: ('1234ABCD5678EFGH',), kwargs: {}
+2025-05-26 20:15:32.563454 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.787620 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-05-26 20:15:32.787620 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-05-26 20:15:32.790620 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-05-26 20:15:32.790620 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-05-26 20:15:32.796869 - Calling function 'get_mask_card_number' with args: ('123',), kwargs: {}
+2025-05-26 20:15:32.796869 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.797726 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-05-26 20:15:32.797726 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.798675 - Calling function 'get_mask_card_number' with args: ('123456781234567890',), kwargs: {}
+2025-05-26 20:15:32.798675 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.817148 - Calling function 'get_mask_card_number' with args: ('1234abcd5678efgh',), kwargs: {}
+2025-05-26 20:15:32.817148 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.821164 - Calling function 'get_mask_card_number' with args: ('1234 5678 9012 3456',), kwargs: {}
+2025-05-26 20:15:32.821164 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-05-26 20:15:32.960617 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-05-26 20:15:32.960617 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-05-26 20:15:32.973739 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-05-26 20:15:32.973739 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
