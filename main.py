@@ -1,12 +1,16 @@
-from typing import List, Dict, Any, Optional
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Optional
 
+from src.external_api import convert_to_rub
 from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.processing import filter_by_state
 from src.processing import sort_by_date
 from src.widget import get_date
 from src.widget import mask_account_card
-from src.external_api import convert_to_rub
+
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
     print(mask_account_card("Счет 64686473678894779589"))
@@ -88,22 +92,16 @@ if __name__ == "__main__":
     for card in card_gen:
         print(card)
 
-    print(convert_to_rub({
-    "id": 41428829,
-    "state": "EXECUTED",
-    "date": "2019-07-03T18:35:29.512364",
-    "operationAmount": {
-      "amount": "8221.37",
-      "currency": {
-        "name": "USD",
-        "code": "USD"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "MasterCard 7158300734726758",
-    "to": "Счет 35383033474447895560"
-  }))
-
-
-
-
+    print(
+        convert_to_rub(
+            {
+                "id": 41428829,
+                "state": "EXECUTED",
+                "date": "2019-07-03T18:35:29.512364",
+                "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
+                "description": "Перевод организации",
+                "from": "MasterCard 7158300734726758",
+                "to": "Счет 35383033474447895560",
+            }
+        )
+    )

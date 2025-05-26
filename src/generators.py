@@ -1,4 +1,8 @@
-from typing import Generator, List, Dict, Optional, Union
+from typing import Dict
+from typing import Generator
+from typing import List
+from typing import Optional
+from typing import Union
 
 
 def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict, None, None]:

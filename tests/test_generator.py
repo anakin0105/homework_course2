@@ -1,10 +1,14 @@
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Optional
+from typing import Union
+
 import pytest
 
 from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.generators import transaction_descriptions
-from typing import Union
-from typing import List, Dict, Any, Optional
 
 
 # Тест 1: Фильтрация транзакций с валютой "USD"
