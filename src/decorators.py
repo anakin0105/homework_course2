@@ -1,6 +1,8 @@
-from functools import wraps
-from typing import Callable, Any, Optional
 import datetime
+from functools import wraps
+from typing import Any
+from typing import Callable
+from typing import Optional
 
 
 def log(filename: Optional[str] = None) -> Callable:

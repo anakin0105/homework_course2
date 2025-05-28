@@ -1,4 +1,5 @@
 import pytest
+
 from src.decorators import log
 from src.masks import get_mask_card_number
 

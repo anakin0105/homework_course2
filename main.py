@@ -1,5 +1,9 @@
-from typing import List, Dict, Any, Optional
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Optional
 
+from src.external_api import convert_to_rub
 from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.processing import filter_by_state
@@ -87,3 +91,17 @@ if __name__ == "__main__":
     card_gen = card_number_generator(1, 10)  # Сгенерируем первые 10 номеров
     for card in card_gen:
         print(card)
+
+    print(
+        convert_to_rub(
+            {
+                "id": 41428829,
+                "state": "EXECUTED",
+                "date": "2019-07-03T18:35:29.512364",
+                "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
+                "description": "Перевод организации",
+                "from": "MasterCard 7158300734726758",
+                "to": "Счет 35383033474447895560",
+            }
+        )
+    )

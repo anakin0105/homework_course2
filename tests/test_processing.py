@@ -1,8 +1,11 @@
+from typing import Dict
+from typing import List
+from typing import Union
+
 import pytest
 
 from src.processing import filter_by_state
 from src.processing import sort_by_date
-from typing import List, Dict, Union
 
 
 @pytest.fixture
