@@ -39,8 +39,6 @@ def read_transactions_json(file_json) -> List[Dict[Any, Any]]:
 
 
 file_path = r"C:\Users\Admin\PycharmProjects\pythonProjectBank1\data\operations.json"
-file_path_1 = r"C:\Users\Admin\PycharmProjects\pythonProjectBank1\data\dateerror"
 print(read_transactions_json(file_path))
 print(read_transactions_json([]))
 print(read_transactions_json([23413]))
-print(read_transactions_json(file_path_1))
