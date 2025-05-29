@@ -1,9 +1,9 @@
+import logging
+import os
 from typing import Union
 from venv import logger
 
 from src.decorators import log
-import logging
-import os
 
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
 log_file = os.path.join(log_dir, "masks.log")
