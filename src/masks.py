@@ -1,6 +1,16 @@
 from typing import Union
+from venv import logger
 
 from src.decorators import log
+import logging
+import datetime
+
+masks_logger = logging.getLogger("masks_logger")
+masks_logger.setLevel(logging.DEBUG)
+file_handler = logging.FileHandler("logs/masks.log", mode="w", encoding="utf-8")
+file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(levelname)s: %(message)s")
+file_handler.setFormatter(file_formatter)
+masks_logger.addHandler(file_handler)
 
 
 @log("log1.txt")
