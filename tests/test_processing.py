@@ -1,10 +1,15 @@
+from typing import Dict
+from typing import List
+from typing import Union
+
 import pytest
 
-from src.processing import filter_by_state, sort_by_date
+from src.processing import filter_by_state
+from src.processing import sort_by_date
 
 
 @pytest.fixture
-def sample_data():
+def sample_data() -> List[Dict[str, Union[int, str]]]:
     """Фикстура для тестирования функций filter_by_state и sort_by_date."""
     return [
         {"id": 1, "state": "EXECUTED", "date": "2023-12-01"},
@@ -15,7 +20,7 @@ def sample_data():
     ]
 
 
-def test_filter_by_state_1():
+def test_filter_by_state_1() -> None:
     data = [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -28,7 +33,7 @@ def test_filter_by_state_1():
     ]
 
 
-def test_filter_by_state_2():
+def test_filter_by_state_2() -> None:
     data = [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -41,7 +46,7 @@ def test_filter_by_state_2():
     ]
 
 
-def test_sort_by_date1():
+def test_sort_by_date1() -> None:
     data = [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},

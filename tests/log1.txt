@@ -1,0 +1,66 @@
+2025-04-23 22:23:12.669671 - Calling function 'get_mask_card_number' with args: ('1234567890123456',), kwargs: {}
+2025-04-23 22:23:12.669671 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 3456
+2025-04-23 22:23:12.674818 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:23:12.674818 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:23:12.680519 - Calling function 'get_mask_card_number' with args: ('1234ABCD5678EFGH',), kwargs: {}
+2025-04-23 22:23:12.680519 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:05.944356 - Calling function 'get_mask_card_number' with args: ('1234567890123456',), kwargs: {}
+2025-04-23 22:30:05.944356 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 3456
+2025-04-23 22:30:05.955404 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:30:05.955404 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:05.960209 - Calling function 'get_mask_card_number' with args: ('1234ABCD5678EFGH',), kwargs: {}
+2025-04-23 22:30:05.960209 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:35.562907 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-04-23 22:30:35.562907 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-04-23 22:30:35.564366 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-04-23 22:30:35.564366 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-04-23 22:30:35.567071 - Calling function 'get_mask_card_number' with args: ('123',), kwargs: {}
+2025-04-23 22:30:35.567071 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:35.567457 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:30:35.567457 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:35.571482 - Calling function 'get_mask_card_number' with args: ('123456781234567890',), kwargs: {}
+2025-04-23 22:30:35.571482 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:35.576792 - Calling function 'get_mask_card_number' with args: ('1234abcd5678efgh',), kwargs: {}
+2025-04-23 22:30:35.576792 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:35.577879 - Calling function 'get_mask_card_number' with args: ('1234 5678 9012 3456',), kwargs: {}
+2025-04-23 22:30:35.577879 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:45.456280 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-04-23 22:30:45.456280 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-04-23 22:30:45.457623 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-04-23 22:30:45.457623 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-04-23 22:30:45.461198 - Calling function 'get_mask_card_number' with args: ('123',), kwargs: {}
+2025-04-23 22:30:45.461198 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:45.462852 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:30:45.462852 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:45.463635 - Calling function 'get_mask_card_number' with args: ('123456781234567890',), kwargs: {}
+2025-04-23 22:30:45.463635 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:45.470896 - Calling function 'get_mask_card_number' with args: ('1234abcd5678efgh',), kwargs: {}
+2025-04-23 22:30:45.470896 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:30:45.472831 - Calling function 'get_mask_card_number' with args: ('1234 5678 9012 3456',), kwargs: {}
+2025-04-23 22:30:45.472831 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:31:34.069518 - Calling function 'get_mask_card_number' with args: ('1234567812345678',), kwargs: {}
+2025-04-23 22:31:34.069518 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 5678
+2025-04-23 22:31:34.071255 - Calling function 'get_mask_card_number' with args: ('8765432187654321',), kwargs: {}
+2025-04-23 22:31:34.071255 - Function 'get_mask_card_number' executed successfully with result: 8765 43** **** 4321
+2025-04-23 22:31:34.075084 - Calling function 'get_mask_card_number' with args: ('123',), kwargs: {}
+2025-04-23 22:31:34.075084 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:31:34.075510 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:31:34.075510 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:31:34.075897 - Calling function 'get_mask_card_number' with args: ('123456781234567890',), kwargs: {}
+2025-04-23 22:31:34.075897 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:31:34.078607 - Calling function 'get_mask_card_number' with args: ('1234abcd5678efgh',), kwargs: {}
+2025-04-23 22:31:34.078607 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:31:34.081022 - Calling function 'get_mask_card_number' with args: ('1234 5678 9012 3456',), kwargs: {}
+2025-04-23 22:31:34.081022 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:35:03.370680 - Calling function 'get_mask_card_number' with args: ('1234567890123456',), kwargs: {}
+2025-04-23 22:35:03.370680 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 3456
+2025-04-23 22:35:03.374564 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:35:03.374564 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:35:03.379195 - Calling function 'get_mask_card_number' with args: ('1234ABCD5678EFGH',), kwargs: {}
+2025-04-23 22:35:03.379195 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:37:04.639846 - Calling function 'get_mask_card_number' with args: ('1234567890123456',), kwargs: {}
+2025-04-23 22:37:04.639846 - Function 'get_mask_card_number' executed successfully with result: 1234 56** **** 3456
+2025-04-23 22:37:04.645545 - Calling function 'get_mask_card_number' with args: ('12345678',), kwargs: {}
+2025-04-23 22:37:04.645545 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
+2025-04-23 22:37:04.649591 - Calling function 'get_mask_card_number' with args: ('1234ABCD5678EFGH',), kwargs: {}
+2025-04-23 22:37:04.649591 - Function 'get_mask_card_number' executed successfully with result: Проверьте правильность введенного номера карты!
