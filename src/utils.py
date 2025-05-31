@@ -14,7 +14,7 @@ file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(me
 file_handler.setFormatter(file_formatter)
 masks_logger.addHandler(file_handler)
 
-masks_logger.info("Скрипт запущен")
+masks_logger.info("Скрипт запущен.")
 
 
 def read_transactions_json(file_json) -> List[Dict[Any, Any]]:
