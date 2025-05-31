@@ -10,7 +10,7 @@ def log(filename: Optional[str] = None) -> Callable:
     Декоратор для логирования работы функций.
 
     :param filename: Имя файла, в который записываются логи. Если None, вывод идёт в консоль.
-    :return: Декорированная функцияpytest --cov=. --cov-report=html
+    :return: Декорированная функция pytest --cov=. --cov-report=html
     """
 
     def decorator(func: Callable) -> Callable:
