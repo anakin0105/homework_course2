@@ -48,7 +48,7 @@ def get_read_csv(file_path: str | None = None) -> Any:
         utils_excel_logger.info("Функция get_read_xlsx завершила работу.")
 
 
-def get_read_xlsx(file_path: str | None = None) -> Any:
+def get_read_excel(file_path: str | None = None) -> Any:
     """
     Функция считывает транзакции из файла .xlsx и возвращает список словарей.
     """
@@ -94,7 +94,7 @@ else:
 
 
 # Проверяем функцию чтения CSV
-xlsx_result = get_read_xlsx()
+xlsx_result = get_read_excel()
 print("\nПроверка работы get_read_excel:")
 if xlsx_result:
     print(f"Считаны данные из Excel (первые 3 записи): {xlsx_result[:3]}")  # Вывести первые 3 записи
