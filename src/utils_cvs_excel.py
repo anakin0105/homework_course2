@@ -1,10 +1,9 @@
 import csv
+import logging
 import os
 from typing import Any
 
 import pandas as pd
-
-import logging
 
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
 log_file = os.path.join(log_dir, "utils_excel.log")
@@ -16,36 +15,47 @@ file_handler.setFormatter(file_formatter)
 utils_excel_logger.addHandler(file_handler)
 
 
-
-
 def get_read_csv(file_path: str | None = None) -> Any:
     """Функция считывает транзакции из файла .csv и возвращает список словарей"""
     utils_excel_logger.info("Функция get_read_csv запущена.")
     if not file_path:
         file_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(file_dir, "..", "data", "transactions.csv")
+
+    # Проверяем расширение файла
+    if not file_path.lower().endswith(".csv"):
+        print("Данные имеют неверный формат!")
+        utils_excel_logger.error(f"Файл {file_path} не является .csv")
+        utils_excel_logger.info("Функция get_read_csv завершила работу.")
+        return []
+
+    expected_headers = ["id", "state", "date", "amount", "currency_name", "currency_code", "from", "to", "description"]
     try:
         data_csv = []
         with open(file_path, "r", encoding="UTF-8") as file_csv:
             reader = csv.DictReader(file_csv, delimiter=";")
-            for row in reader:
-                data_csv.append(row)
-            if len(data_csv) != 0:
-                return data_csv
-            else:
+            # Проверяем заголовки
+            if sorted(reader.fieldnames) != sorted(expected_headers):
                 print("Данные имеют неверный формат!")
-                utils_excel_logger.error("Данные имеют неверный формат!")
-                utils_excel_logger.info("Функция get_read_csv завершила работу.")
+                utils_excel_logger.error(f"Неверные заголовки: {reader.fieldnames}")
+                return []
+            for row in reader:
+                # Проверяем, что все обязательные поля заполнены
+                if all(row.get(key) for key in expected_headers):
+                    data_csv.append(row)
+                else:
+                    utils_excel_logger.warning(f"Пропущены данные в строке: {row}")
+            return data_csv
     except FileNotFoundError:
         print("Ошибка! Файл не найден!")
-        utils_excel_logger.error("Ошибка! Файл не найден!")
-        utils_excel_logger.info("Функция get_read_csv завершила работу.")
-    except TypeError as e:
-        print(f"Данные имеют неверный формат {e}!")
-        utils_excel_logger.error(f"Данные имеют неверный формат {e}!")
-        utils_excel_logger.info("Функция get_read_csv завершила работу.")
+        utils_excel_logger.error(f"Файл {file_path} не найден!")
+        return []
+    except (csv.Error, ValueError, TypeError) as e:
+        print("Данные имеют неверный формат!")
+        utils_excel_logger.error(f"Ошибка обработки файла {file_path}: {e}")
+        return []
     finally:
-        utils_excel_logger.info("Функция get_read_xlsx завершила работу.")
+        utils_excel_logger.info("Функция get_read_csv завершила работу.")
 
 
 def get_read_excel(file_path: str | None = None) -> Any:
