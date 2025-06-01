@@ -52,7 +52,7 @@ def get_read_csv(file_path: str | None = None) -> Any:
         return []
     except (csv.Error, ValueError, TypeError) as e:
         print("Данные имеют неверный формат!")
-        utils_excel_logger.error(f"Ошибка обработки файла {file_path}: {e}")
+        utils_excel_logger.error(f"Ошибка обработки файла {file_path}: {e}.")
         return []
     finally:
         utils_excel_logger.info("Функция get_read_csv завершила работу.")
