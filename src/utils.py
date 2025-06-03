@@ -7,14 +7,14 @@ from typing import List
 
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
 log_file = os.path.join(log_dir, "utils.log")
-masks_logger = logging.getLogger("ulils_logger")
-masks_logger.setLevel(logging.DEBUG)
+utils_logger = logging.getLogger("ulils_logger")
+utils_logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler(log_file, mode="w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
-masks_logger.addHandler(file_handler)
+utils_logger.addHandler(file_handler)
 
-masks_logger.info("Скрипт запущен.")
+utils_logger.info("Скрипт запущен.")
 
 
 def read_transactions_json(file_json) -> List[Dict[Any, Any]]:
@@ -35,7 +35,7 @@ def read_transactions_json(file_json) -> List[Dict[Any, Any]]:
 
             return data
     except (FileNotFoundError, json.JSONDecodeError, TypeError, KeyError, ValueError) as e:
-        masks_logger.error(f"Функция get_mask_account завершила работу c ошибкой {e}! ")
+        utils_logger.error(f"Функция get_mask_account завершила работу c ошибкой {e}! ")
         return []
 
 
