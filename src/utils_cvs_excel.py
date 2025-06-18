@@ -93,7 +93,6 @@ def get_read_excel(file_path: str | None = None) -> Any:
     finally:
         utils_excel_logger.info("Функция get_read_xlsx завершила работу.")
 
-
 # Проверяем функцию чтения CSV
 csv_result = get_read_csv()
 print("\nПроверка работы get_read_csv:")

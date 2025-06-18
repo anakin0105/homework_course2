@@ -8,8 +8,12 @@ from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.processing import filter_by_state
 from src.processing import sort_by_date
+from src.utils_cvs_excel import get_read_excel
 from src.widget import get_date
 from src.widget import mask_account_card
+from src.utils_cvs_excel import get_read_excel
+from src.utils_cvs_excel import get_read_csv
+
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
@@ -105,3 +109,20 @@ if __name__ == "__main__":
             }
         )
     )
+
+# Проверяем функцию чтения CSV
+csv_result = get_read_csv()
+print("\nПроверка работы get_read_csv:")
+if csv_result:
+    print(f"Считаны данные из CSV (первые 3 записи): {csv_result[:3]}")  # Вывести первые 3 записи
+else:
+    print("Данные из CSV не считаны или пусты!")
+
+
+# Проверяем функцию чтения CSV
+xlsx_result = get_read_excel()
+print("\nПроверка работы get_read_excel:")
+if xlsx_result:
+    print(f"Считаны данные из Excel (первые 3 записи): {xlsx_result[:3]}")  # Вывести первые 3 записи
+else:
+    print("Данные из Excel не считаны или пусты!")
