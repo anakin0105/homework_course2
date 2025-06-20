@@ -93,19 +93,19 @@ def get_read_excel(file_path: str | None = None) -> Any:
     finally:
         utils_excel_logger.info("Функция get_read_xlsx завершила работу.")
 
-# Проверяем функцию чтения CSV
-csv_result = get_read_csv()
-print("\nПроверка работы get_read_csv:")
-if csv_result:
-    print(f"Считаны данные из CSV (первые 3 записи): {csv_result[:3]}")  # Вывести первые 3 записи
-else:
-    print("Данные из CSV не считаны или пусты!")
-
-
-# Проверяем функцию чтения CSV
-xlsx_result = get_read_excel()
-print("\nПроверка работы get_read_excel:")
-if xlsx_result:
-    print(f"Считаны данные из Excel (первые 3 записи): {xlsx_result[:3]}")  # Вывести первые 3 записи
-else:
-    print("Данные из Excel не считаны или пусты!")
+# # Проверяем функцию чтения CSV
+# csv_result = get_read_csv()
+# print("\nПроверка работы get_read_csv:")
+# if csv_result:
+#     print(f"Считаны данные из CSV (первые 3 записи): {csv_result[:3]}")  # Вывести первые 3 записи
+# else:
+#     print("Данные из CSV не считаны или пусты!")
+#
+#
+# # Проверяем функцию чтения CSV
+# xlsx_result = get_read_excel()
+# print("\nПроверка работы get_read_excel:")
+# if xlsx_result:
+#     print(f"Считаны данные из Excel (первые 3 записи): {xlsx_result[:3]}")  # Вывести первые 3 записи
+# else:
+#     print("Данные из Excel не считаны или пусты!")

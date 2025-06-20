@@ -14,6 +14,15 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dic
         elif operation_currency is None:
             print("Пропущенная операция: нет валюты")
 
+def filter_by_currency_csv_excel(transactions: List[Dict], currency: str) -> Generator[Dict, None, None]:
+    for transaction in transactions:
+        operation_currency = transaction.get("currency_code")
+        if operation_currency == currency:
+            yield transaction
+        # Возможно, этой строке нужно покрытие
+        elif operation_currency is None:
+            print("Пропущенная операция: нет валюты")
+
 
 def transaction_descriptions(transactions: List[Dict[str, Union[int, Optional[str]]]]) -> List[Optional[str]]:
     """
