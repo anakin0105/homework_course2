@@ -48,9 +48,9 @@ def get_mask_account(account_number: Union[str]) -> Union[str]:
         print(error_message)  # Выводим ошибку через print
         return "Введены некорректные данные!"
 
-
-get_mask_card_number("123")
-get_mask_account("abc")
-print(get_mask_account("12751596837868705199"))
-print(get_mask_account("1596837868705199"))
-print(get_mask_account([]))
+#
+# get_mask_card_number("123")
+# get_mask_account("abc")
+# print(get_mask_account("12751596837868705199"))
+# print(get_mask_account("1596837868705199"))
+# print(get_mask_account([]))
