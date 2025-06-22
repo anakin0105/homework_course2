@@ -50,15 +50,18 @@ def main() -> None:
         ).replace(" ", "").replace(".", "").upper()
 
         if input_state_of_operations == "1" or input_state_of_operations =="EXECUTED":
+            input_state_of_operations = "EXECUTED"
             print(f"Операция отфильтрована по статусу {input_state_of_operations}")
             state_of_operations = filter_by_state(transactions, input_state_of_operations)
             break
 
         elif input_state_of_operations == "2" or input_state_of_operations == "CANCELED":
+            input_state_of_operations = "CANCELED"
             print(f"Операция отфильтрована по статусу {input_state_of_operations}")
             state_of_operations = filter_by_state(transactions, input_state_of_operations)
             break
         elif input_state_of_operations == "3" or input_state_of_operations == "PENDING":
+            input_state_of_operations = "PENDING"
             print(f"Операция отфильтрована по статусу {input_state_of_operations}")
             state_of_operations = filter_by_state(transactions, input_state_of_operations)
             break
@@ -123,16 +126,19 @@ def main() -> None:
     else:
         print(f"Всего банковских операций в выборке: {len(search_word)}")
         for transaction in search_word:
-            print(f"{get_date(transaction.get("data"))}, {transaction.get('description')}")
-            if "Перевод" in transaction.get("description"):
+            print(f"{get_date(transaction.get("date"))}. {transaction.get('description')}")
+            if "from" in transaction:
                 print(
-                    f"""{mask_account_card(transaction.get("from"))} -> {mask_account_card(transaction.get("to"))}"""
+                    f"""откуда: {mask_account_card(transaction.get("from"))} -> куда: {mask_account_card(transaction.get("to"))}"""
                 )
             else:
                 print(f"""{mask_account_card(transaction.get("to"))}""")
-            if transaction.get("currency_code") == "RUB":
-                transaction["currency_code"] = "руб."
-            print(f"""Сумма: {transaction.get("amount")} {transaction.get("currency_code")}\n""")
+            if flag_json:
+                print(f"""Сумма: {transaction.get('operationAmount',{}).get('amount', '')} 
+Валюта: {transaction.get('operationAmount',{}).get('currency',{}).get('code', '')} \n""")
+            else:
+                print(f"""Сумма: {transaction.get('amount', '')}  "
+                        Валюта: {transaction.get('currency_name', '')}""")
 
 if __name__ == "__main__":
     main()

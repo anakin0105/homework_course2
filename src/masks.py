@@ -15,7 +15,7 @@ file_handler.setFormatter(file_formatter)
 masks_logger.addHandler(file_handler)
 
 
-@log()
+# @log()
 def get_mask_card_number(card_number: Union[str]) -> Union[str]:
     """Функция принимает на вход номер карты в виде числа и
     возвращает маску номера по правилу XXXX XX** **** XXXX"""
@@ -30,7 +30,7 @@ def get_mask_card_number(card_number: Union[str]) -> Union[str]:
         return "Проверьте правильность введенного номера карты!"
 
 
-@log()
+# @log()
 def get_mask_account(account_number: Union[str]) -> Union[str]:
     masks_logger.info("Запущена функция get_mask_account!")
     try:
