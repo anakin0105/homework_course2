@@ -37,6 +37,3 @@ def read_transactions_json(file_json) -> List[Dict[Any, Any]]:
     except (FileNotFoundError, json.JSONDecodeError, TypeError, KeyError, ValueError) as e:
         utils_logger.error(f"Функция get_mask_account завершила работу c ошибкой {e}! ")
         return []
-
-
-

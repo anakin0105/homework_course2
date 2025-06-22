@@ -1,9 +1,7 @@
 import logging
 import os
 from typing import Union
-from venv import logger
 
-from src.decorators import log
 
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
 log_file = os.path.join(log_dir, "masks.log")
@@ -47,6 +45,7 @@ def get_mask_account(account_number: Union[str]) -> Union[str]:
         masks_logger.error(error_message)  # Логируем ошибку
         print(error_message)  # Выводим ошибку через print
         return "Введены некорректные данные!"
+
 
 #
 # get_mask_card_number("123")

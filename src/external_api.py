@@ -1,8 +1,9 @@
 import os  # Импортирую модуль os для работы с файловой системой и переменными окружения
 
 import requests  # Импортирую библиотеку requests для работы с HTTP-запросами (например, для API)
-from dotenv import \
-    load_dotenv  # Импортирую load_dotenv из библиотеки python - dotenv для загрузки переменных файла .env load_dotenv
+from dotenv import (
+    load_dotenv,
+)  # Импортирую load_dotenv из библиотеки python - dotenv для загрузки переменных файла .env load_dotenv
 
 load_dotenv()  # Загружаю переменные окружения из файла .env (например, мой API - ключ)
 API_KEY = os.getenv("API_KEY")  # Получаю значение переменной APIKAY из .env и сохраняю в переменную API_KAY

@@ -5,7 +5,7 @@ from collections import Counter
 def process_bank_search(data: list[dict], search: str) -> list[dict]:
     """Фильтрует операции, где в описании есть строка поиска (регистронезависимо)."""
     pattern = re.compile(re.escape(search), re.IGNORECASE)
-    return [item for item in data if pattern.search(item.get('description', ''))]
+    return [item for item in data if pattern.search(item.get("description", ""))]
 
 
 def process_bank_operations(data: list[dict], categories: list) -> dict:

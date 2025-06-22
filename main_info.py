@@ -8,12 +8,10 @@ from src.generators import card_number_generator
 from src.generators import filter_by_currency
 from src.processing import filter_by_state
 from src.processing import sort_by_date
+from src.utils_cvs_excel import get_read_csv
 from src.utils_cvs_excel import get_read_excel
 from src.widget import get_date
 from src.widget import mask_account_card
-from src.utils_cvs_excel import get_read_excel
-from src.utils_cvs_excel import get_read_csv
-
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
