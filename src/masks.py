@@ -1,9 +1,7 @@
 import logging
 import os
 from typing import Union
-from venv import logger
 
-from src.decorators import log
 
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
 log_file = os.path.join(log_dir, "masks.log")
@@ -15,7 +13,7 @@ file_handler.setFormatter(file_formatter)
 masks_logger.addHandler(file_handler)
 
 
-@log()
+# @log()
 def get_mask_card_number(card_number: Union[str]) -> Union[str]:
     """Функция принимает на вход номер карты в виде числа и
     возвращает маску номера по правилу XXXX XX** **** XXXX"""
@@ -30,7 +28,7 @@ def get_mask_card_number(card_number: Union[str]) -> Union[str]:
         return "Проверьте правильность введенного номера карты!"
 
 
-@log()
+# @log()
 def get_mask_account(account_number: Union[str]) -> Union[str]:
     masks_logger.info("Запущена функция get_mask_account!")
     try:
@@ -49,8 +47,9 @@ def get_mask_account(account_number: Union[str]) -> Union[str]:
         return "Введены некорректные данные!"
 
 
-get_mask_card_number("123")
-get_mask_account("abc")
-print(get_mask_account("12751596837868705199"))
-print(get_mask_account("1596837868705199"))
-print(get_mask_account([]))
+#
+# get_mask_card_number("123")
+# get_mask_account("abc")
+# print(get_mask_account("12751596837868705199"))
+# print(get_mask_account("1596837868705199"))
+# print(get_mask_account([]))

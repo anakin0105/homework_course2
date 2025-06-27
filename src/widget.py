@@ -57,7 +57,6 @@ def get_date(date_time: str) -> str:
         return "Дата указана неверно!"
     if "T" not in date_time:
         return "Дата указана неверно!"
-
     try:
         # Если удалось успешно извлечь части даты, возвращаем результат
         return f"{date_time[8:10]}.{date_time[5:7]}.{date_time[:4]}"

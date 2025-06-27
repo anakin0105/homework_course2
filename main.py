@@ -1,107 +1,190 @@
-from typing import Any
-from typing import Dict
-from typing import List
-from typing import Optional
-
-from src.external_api import convert_to_rub
-from src.generators import card_number_generator
 from src.generators import filter_by_currency
+from src.generators import filter_by_currency_csv_excel
 from src.processing import filter_by_state
 from src.processing import sort_by_date
+from src.search import process_bank_search
+from src.utils import read_transactions_json
+from src.utils_cvs_excel import get_read_csv
+from src.utils_cvs_excel import get_read_excel
 from src.widget import get_date
 from src.widget import mask_account_card
 
-if __name__ == "__main__":
-    print(mask_account_card("Maestro 1596837868705199"))
-    print(mask_account_card("Счет 64686473678894779589"))
-    print(mask_account_card("MasterCard 7158300734726758"))
-    print(mask_account_card("Счет 35383033474447895560"))
-    print(mask_account_card("Visa Classic 6831982476737658"))
-    print(mask_account_card("Visa Platinum 8990922113665229"))
-    print(mask_account_card("Visa Gold 5999414228426353"))
-    print(mask_account_card("Счет 7p3654108430135874305"))
-    # Вызов get_date.
-    print(get_date("2024-03-11T02:26:18.671407"))
-    print(get_date("2025-12-31T23:59:59.000000"))
 
-    # Исходные данные.
-    data = [
-        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
-        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
-    ]
+def main() -> None:
+    """Функция, позволяющая пользователю производить отбор банковских транзакций,
+    соответствующих заданным им критериям"""
 
-    # Вызов filter_by_state для EXECUTED.
-    print(filter_by_state(data, "EXECUTED"))
-
-    # Вызов filter_by_state для CANCELED.
-    print(filter_by_state(data, "CANCELED"))
-
-    # Вызов sort_by_date на отфильтрованных данных (EXECUTED) в порядке убывания.
-    print(sort_by_date(filter_by_state(data, "EXECUTED"), True))
-
-    # Вызов sort_by_date на отфильтрованных данных (CANCELED) по возрастанию.
-    print(sort_by_date(filter_by_state(data, "CANCELED"), False))
-
-    # Вызов filter_by_currency для USD
-    transactions = [
-        {
-            "id": 939719570,
-            "state": "EXECUTED",
-            "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перевод организации",
-            "from": "Счет 75106830613657916952",
-            "to": "Счет 11776614605963066702",
-        },
-        {
-            "id": 142264268,
-            "state": "EXECUTED",
-            "date": "2019-04-04T23:20:05.206878",
-            "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перевод со счета на счет",
-            "from": "Счет 19708645243227258542",
-            "to": "Счет 75651667383060284188",
-        },
-        {
-            "id": 123456789,
-            "state": "PENDING",
-            "date": "2020-01-01T00:00:00",
-            "operationAmount": {"amount": "1200.00", "currency": {"name": "EUR", "code": "EUR"}},
-            "description": "Покупка",
-            "from": "Счет 12345678912345678912",
-            "to": "Счет 98765432198765432198",
-        },
-    ]
-
-    # Используем генератор для получения первых двух транзакций в USD:
-    print("Транзакции в валюте USD:")
-    usd_transactions = filter_by_currency(transactions, "USD")
-    for _ in range(2):  # Получить две первые транзакции
-        print(next(usd_transactions))
-
-    # Вызов transaction_descriptions с исправленной типизацией.
-    def transaction_descriptions(txns: List[Dict[str, Any]]) -> List[Optional[str]]:
-        """Возвращает список описаний транзакций."""
-        return [txn.get("description") for txn in txns]
-
-    # Генерация номеров карт.
-    print("Генерация номеров карт:")
-    card_gen = card_number_generator(1, 10)  # Сгенерируем первые 10 номеров
-    for card in card_gen:
-        print(card)
-
-    print(
-        convert_to_rub(
-            {
-                "id": 41428829,
-                "state": "EXECUTED",
-                "date": "2019-07-03T18:35:29.512364",
-                "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
-                "description": "Перевод организации",
-                "from": "MasterCard 7158300734726758",
-                "to": "Счет 35383033474447895560",
-            }
+    print("Привет! Добро пожаловать в программу работы с банковскими транзакциями.")
+    user_name = input("Укажите как в вам обращаться:")
+    flag_json = False
+    while True:
+        file_format = (
+            input(
+                f"""{user_name}, выберите необходимый пункт меню:
+        1. Получить информацию о транзакциях из JSON-файла
+        2. Получить информацию о транзакциях из CSV-файла
+        3. Получить информацию о транзакциях из XLSX-файла
+        Введите номер пункта, {user_name}:   """
+            )
+            .replace(" ", "")
+            .replace(".", "")
         )
-    )
+        if file_format == "1":
+            print("Для обработки выбран JSON-файл.")
+            transactions = read_transactions_json("data/operations.json")
+            flag_json = True
+            break
+        elif file_format == "2":
+            print("Для обработки выбран CSV-файл.")
+            transactions = get_read_csv("data/transactions.csv")
+            break
+        elif file_format == "3":
+            print("Для обработки выбран XLSX-файл.")
+            transactions = get_read_excel("data/transactions_excel.xlsx")
+            break
+        else:
+            print("Введите номер пункта цифрой. Пример: => 1")
+    while True:
+        input_state_of_operations = (
+            input(
+                f"""{user_name}, введите статус, по которому необходимо выполнить фильтрацию.
+        Доступные для фильтровки статусы:
+        1 - EXECUTED,
+        2 - CANCELED,
+        3 - PENDING.
+        Введите статус для фильтрации, {user_name}: """
+            )
+            .replace(" ", "")
+            .replace(".", "")
+            .upper()
+        )
+
+        if input_state_of_operations == "1" or input_state_of_operations == "EXECUTED":
+            input_state_of_operations = "EXECUTED"
+            print(f"Операция отфильтрована по статусу {input_state_of_operations}")
+            state_of_operations = filter_by_state(transactions, input_state_of_operations)
+            break
+
+        elif input_state_of_operations == "2" or input_state_of_operations == "CANCELED":
+            input_state_of_operations = "CANCELED"
+            print(f"Операция отфильтрована по статусу {input_state_of_operations}")
+            state_of_operations = filter_by_state(transactions, input_state_of_operations)
+            break
+        elif input_state_of_operations == "3" or input_state_of_operations == "PENDING":
+            input_state_of_operations = "PENDING"
+            print(f"Операция отфильтрована по статусу {input_state_of_operations}")
+            state_of_operations = filter_by_state(transactions, input_state_of_operations)
+            break
+        else:
+            print(
+                f"""Статус операции "{input_state_of_operations}" недоступен.
+        Введите для фильтрации статусы: EXECUTED, CANCELED, PENDING"""
+            )
+
+    while True:
+        sorted_by_date_check = (
+            input(
+                """Отсортировать операции по дате?
+                Введите да/нет:  """
+            )
+            .strip()
+            .replace(" ", "")
+            .replace(".", "")
+            .lower()
+        )
+        if sorted_by_date_check == "да":
+            while True:
+                flow_check = (
+                    input(
+                        """Отсортировать по возрастанию или по убыванию?
+                           ведите по возрастанию/ по убыванию: """
+                    )
+                    .strip()
+                    .replace(".", "")
+                    .lower()
+                )
+                if flow_check == "по возрастанию":
+                    sorted_transaction = sort_by_date(state_of_operations, False)
+                    break
+                elif flow_check == "по убыванию":
+                    sorted_transaction = sort_by_date(state_of_operations)
+                    break
+                else:
+                    print("Введите по возрастанию или по убыванию.")
+            break
+        elif sorted_by_date_check == "нет":
+            sorted_transaction = state_of_operations
+            break
+        else:
+            print("Введите да или нет.")
+    while True:
+        currency_check = (
+            input(
+                """Выводить только рублевые транзакции да/нет?
+        Введите да/нет: """
+            )
+            .strip()
+            .replace(" ", "")
+            .replace(".", "")
+            .lower()
+        )
+        if currency_check == "да":
+            if flag_json:
+                currency_search = list(filter_by_currency(sorted_transaction, "RUB"))
+                break
+            else:
+                currency_search = list(filter_by_currency_csv_excel(sorted_transaction, "RUB"))
+                break
+        elif currency_check == "нет":
+            currency_search = sorted_transaction
+            break
+        else:
+            print("Введите да или нет.")
+    while True:
+        search_check = (
+            input(
+                """Отфильтровать список транзакций по определенному слову в описании да/нет?
+        Введите да/нет: """
+            )
+            .strip()
+            .replace(" ", "")
+            .replace(".", "")
+            .lower()
+        )
+        if search_check == "да":
+            target = input("""Введите слово для поиска: """)
+            search_word = process_bank_search(currency_search, target)
+            break
+        elif search_check == "нет":
+            search_word = currency_search
+            break
+        else:
+            print("Введите да или нет")
+
+    print("Распечатываю итоговый список транзакций...")
+    if not search_word:
+        print("Не найдено ни одной операции подходящие под ваши условия.")
+    else:
+        print(f"Всего банковских операций в выборке: {len(search_word)}")
+        for transaction in search_word:
+            print(f"{get_date(transaction.get("date"))}. {transaction.get('description')}")
+            if "from" in transaction:
+                print(
+                    f"""{mask_account_card(transaction.get("from"))} -> {mask_account_card(transaction.get("to"))}"""
+                )
+            else:
+                print(f"""{mask_account_card(transaction.get("to"))}""")
+            if flag_json:
+                print(
+                    f"""Сумма: {transaction.get('operationAmount', {}).get('amount', '')} 
+Валюта: {transaction.get('operationAmount', {}).get('currency', {}).get('code', '')}\n"""
+                )
+            else:
+                print(
+                    f"""Сумма: {transaction.get('amount', '')} 
+Валюта: {transaction.get('currency_name', '')}\n"""
+                )
+
+
+if __name__ == "__main__":
+    main()
