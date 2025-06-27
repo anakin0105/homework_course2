@@ -170,19 +170,19 @@ def main() -> None:
             print(f"{get_date(transaction.get("date"))}. {transaction.get('description')}")
             if "from" in transaction:
                 print(
-                    f""" {mask_account_card(transaction.get("from"))} -> {mask_account_card(transaction.get("to"))}"""
+                    f"""{mask_account_card(transaction.get("from"))} -> {mask_account_card(transaction.get("to"))}"""
                 )
             else:
                 print(f"""{mask_account_card(transaction.get("to"))}""")
             if flag_json:
                 print(
-                    f"""Сумма: {transaction.get('operationAmount', {}).get('amount', '')}
-                Валюта: {transaction.get('operationAmount', {}).get('currency', {}).get('code', '')}\n"""
+                    f"""Сумма: {transaction.get('operationAmount', {}).get('amount', '')} 
+Валюта: {transaction.get('operationAmount', {}).get('currency', {}).get('code', '')}\n"""
                 )
             else:
                 print(
-                    f"""Сумма: {transaction.get('amount', '')}  "
-                        Валюта: {transaction.get('currency_name', '')}"""
+                    f"""Сумма: {transaction.get('amount', '')} 
+Валюта: {transaction.get('currency_name', '')}\n"""
                 )
 
 
