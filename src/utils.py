@@ -37,9 +37,3 @@ def read_transactions_json(file_json) -> List[Dict[Any, Any]]:
     except (FileNotFoundError, json.JSONDecodeError, TypeError, KeyError, ValueError) as e:
         utils_logger.error(f"Функция get_mask_account завершила работу c ошибкой {e}! ")
         return []
-
-
-file_path = r"C:\Users\Admin\PycharmProjects\pythonProjectBank1\data\operations.json"
-print(read_transactions_json(file_path))
-print(read_transactions_json([]))
-print(read_transactions_json([23413]))
